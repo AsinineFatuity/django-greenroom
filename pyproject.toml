@@ -1,5 +1,5 @@
 [project]
-name = ""
+name = "gwariva-payments"
 version = "0.0.1"
 dependencies = [
     "asgiref",
