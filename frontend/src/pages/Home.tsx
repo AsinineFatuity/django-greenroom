@@ -15,6 +15,7 @@ import {
   rem,
 } from "@mantine/core";
 import {
+  IconBrandMantine,
   IconBrandReact,
   IconBrandVite,
   IconRocket,
@@ -41,6 +42,7 @@ const stackBadges: {
   { label: "Django", color: djangoGreen.header, icon: IconServer },
   { label: "React", color: "#61DAFB", icon: IconBrandReact, textColor: "#0a2540" },
   { label: "Vite", color: "#646CFF", icon: IconBrandVite },
+  { label: "Mantine", color: "#339AF0", icon: IconBrandMantine },
 ];
 
 const Home = () => {
@@ -115,7 +117,7 @@ const Home = () => {
                   Your Awesome Project
                 </Title>
                 <Text c={djangoGreen.light} size="sm" ta="center" maw={360}>
-                  Hybrid Django · React · Vite — launched and ready for liftoff.
+                  Hybrid Django · React · Vite · Mantine — launched and ready for liftoff.
                 </Text>
               </Stack>
             </Box>
