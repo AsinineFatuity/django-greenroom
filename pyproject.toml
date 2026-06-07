@@ -1,0 +1,12 @@
+[project]
+name = ""
+version = "0.0.1"
+dependencies = [
+    "asgiref",
+    "django",
+    "django-vite",
+    "sqlparse",
+]
+
+[tool.uv]
+package = false
