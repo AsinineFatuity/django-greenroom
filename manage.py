@@ -1,11 +1,14 @@
-
 #!/usr/bin/env python
 import os
 import sys
+from decouple import config
+
+PROD_ENVIRONMENT = "production"
+environment = config("ENVIRONMENT", default=PROD_ENVIRONMENT)
 
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gwariva.settings')
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", f"project.settings.{environment}")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -17,5 +20,5 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
