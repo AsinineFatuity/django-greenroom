@@ -1,20 +1,24 @@
-
+import logging
 import os
+import sys
 from pathlib import Path
+from decouple import config
+from project.settings.config import * # noqa
+
+logging.basicConfig(
+    stream=sys.stdout,
+    level=logging.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tdu)edusupi8_!3q02itu1hh93g%i9q*sqi$p)ph+w4b)6xn+#'
+ENVIRONMENT = config('ENVIRONMENT', default='production')
+IS_PRODUCTION = ENVIRONMENT == 'production'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+DEBUG = 0 if IS_PRODUCTION else 1
 
 # Application definition
 
