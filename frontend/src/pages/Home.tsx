@@ -8,6 +8,7 @@ import {
   Divider,
   Group,
   Paper,
+  SimpleGrid,
   Stack,
   Text,
   ThemeIcon,
@@ -80,16 +81,19 @@ const Home = () => {
 
   return (
     <Box
-      mih="100vh"
+      mih="100dvh"
+      py={{ base: rem(24), sm: rem(64) }}
       style={{
-        background: `linear-gradient(165deg, ${djangoGreen.dark} 0%, ${djangoGreen.header} 42%, ${djangoGreen.cream} 42%, ${djangoGreen.cream} 100%)`,
+        display: "flex",
+        alignItems: "center",
+        background: `linear-gradient(165deg, ${djangoGreen.dark} 0%, ${djangoGreen.header} 48%, ${djangoGreen.cream} 48%, ${djangoGreen.cream} 100%)`,
       }}
     >
-      <Container size="sm" py={rem(64)}>
-        <Stack align="center" gap="xl">
+      <Container size="sm" px={{ base: "xs", sm: "md" }} w="100%">
+        <Stack align="center" gap={rem(24)}>
           <Paper
             radius="xl"
-            p="xl"
+            p={{ base: "md", sm: "xl" }}
             shadow="xl"
             w="100%"
             style={{
@@ -99,7 +103,7 @@ const Home = () => {
             }}
           >
             <Box
-              py={rem(28)}
+              py={{ base: rem(20), sm: rem(28) }}
               mb="lg"
               style={{
                 background: `linear-gradient(135deg, ${djangoGreen.header} 0%, ${djangoGreen.dark} 100%)`,
@@ -110,7 +114,7 @@ const Home = () => {
             >
               <Stack align="center" gap="sm">
                 <ThemeIcon
-                  size={72}
+                  size={60}
                   radius="xl"
                   variant="light"
                   color="teal"
@@ -120,7 +124,7 @@ const Home = () => {
                     border: `2px solid ${djangoGreen.accent}`,
                   }}
                 >
-                  <IconRocket size={40} stroke={1.5} />
+                  <IconRocket size={34} stroke={1.5} />
                 </ThemeIcon>
                 <Title
                   order={1}
@@ -130,14 +134,14 @@ const Home = () => {
                 >
                   Your Awesome Project
                 </Title>
-                <Text c={djangoGreen.light} size="sm" ta="center" maw={360}>
+                <Text c={djangoGreen.light} size="sm" ta="center" maw={360} px="xs">
                   Hybrid Django · React · Vite · Mantine — launched and ready for liftoff.
                 </Text>
               </Stack>
             </Box>
 
             <Stack gap="md">
-              <Group justify="center" gap="xs">
+              <Group justify="center" gap="xs" wrap="wrap">
                 {stackBadges.map(({ label, color, icon: Icon, textColor }) => (
                   <Badge
                     key={label}
@@ -167,7 +171,7 @@ const Home = () => {
               />
 
               <Card
-                padding="lg"
+                p={{ base: "md", sm: "lg" }}
                 radius="md"
                 withBorder
                 style={{
@@ -186,15 +190,17 @@ const Home = () => {
                 </Stack>
               </Card>
 
-              <Group grow>
+              <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
                 <Button
                   size="md"
                   variant="light"
                   color="teal"
+                  fullWidth
                   leftSection={<IconInfoCircle size={18} />}
                   onClick={showWelcomeToast}
                   styles={{
                     root: {
+                      minWidth: 0,
                       minHeight: rem(48),
                       fontWeight: 600,
                       color: djangoGreen.dark,
@@ -206,10 +212,12 @@ const Home = () => {
                 </Button>
                 <Button
                   size="md"
+                  fullWidth
                   leftSection={<IconRocket size={18} />}
                   onClick={load}
                   styles={{
                     root: {
+                      minWidth: 0,
                       background: `linear-gradient(135deg, ${djangoGreen.accent} 0%, ${djangoGreen.header} 100%)`,
                       border: "none",
                       minHeight: rem(48),
@@ -225,7 +233,7 @@ const Home = () => {
                 >
                   Test Loader
                 </Button>
-              </Group>
+              </SimpleGrid>
             </Stack>
           </Paper>
 
