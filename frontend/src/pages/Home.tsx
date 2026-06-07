@@ -1,5 +1,5 @@
 import React from "react";
-import { showCustomFeedbackToastThunk } from "@/redux/middleware/thunks/feedbackToast";
+import { setFeedbackToast } from "@/redux/reducer/slices/feedbackToast";
 import { useAppDispatch } from "../hooks";
 import { startLoading, stopLoading } from "@/redux/reducer/slices/loading";
 
@@ -8,12 +8,12 @@ const Home = () => {
 
   React.useEffect(() => {
     dispatch(
-      showCustomFeedbackToastThunk({
+      setFeedbackToast({
         message: "Welcome to my hybrid Django-React project",
         type: "info",
       }),
-    ).unwrap();
-  }, []);
+    );
+  }, [dispatch]);
   const load = () => {
     dispatch(startLoading());
     setTimeout(() => {
