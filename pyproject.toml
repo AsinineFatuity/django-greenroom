@@ -1,11 +1,11 @@
 [project]
-name = "gwariva-payments"
+name = "your-awesome-project"
 version = "0.0.1"
 dependencies = [
-    "asgiref",
-    "django",
-    "django-vite",
-    "sqlparse",
+    "asgiref>=3.11.1",
+    "django>=6.0,<7",
+    "django-vite>=3.1.0",
+    "sqlparse>=0.5.5",
 ]
 
 [tool.uv]
