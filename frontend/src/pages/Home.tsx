@@ -18,10 +18,12 @@ import {
   IconBrandMantine,
   IconBrandReact,
   IconBrandVite,
+  IconInfoCircle,
   IconRocket,
   IconServer,
 } from "@tabler/icons-react";
 import { setFeedbackToast } from "@/redux/reducer/slices/feedbackToast";
+import { FeedBackToast } from "@/types/feedbackToast";
 import { useAppDispatch } from "../hooks";
 import { startLoading, stopLoading } from "@/redux/reducer/slices/loading";
 
@@ -45,16 +47,32 @@ const stackBadges: {
   { label: "Mantine", color: "#339AF0", icon: IconBrandMantine },
 ];
 
+const toastMessages: FeedBackToast[] = [
+  { message: "Welcome to my hybrid Django-React project", type: "info" },
+  { message: "This is a resounding success!", type: "success" },
+  { message: "This is a warning message", type: "warning" },
+  { message: "This is an error message", type: "error" },
+  { message: "This is a default message", type: "default" },
+];
+
+const getRandomToastMessage = (): FeedBackToast =>
+  toastMessages[Math.floor(Math.random() * toastMessages.length)];
+
 const Home = () => {
   const dispatch = useAppDispatch();
 
-  React.useEffect(() => {
+  const showWelcomeToast = () => {
+    const randomMessage = getRandomToastMessage();
     dispatch(
       setFeedbackToast({
-        message: "Welcome to my hybrid Django-React project",
-        type: "info",
+        message: randomMessage.message,
+        type: randomMessage.type,
       }),
     );
+  };
+
+  React.useEffect(() => {
+    showWelcomeToast();
   }, [dispatch]);
 
   const load = () => {
@@ -172,28 +190,46 @@ const Home = () => {
                 </Stack>
               </Card>
 
-              <Button
-                size="md"
-                fullWidth
-                leftSection={<IconRocket size={18} />}
-                onClick={load}
-                styles={{
-                  root: {
-                    background: `linear-gradient(135deg, ${djangoGreen.accent} 0%, ${djangoGreen.header} 100%)`,
-                    border: "none",
-                    minHeight: rem(48),
-                    fontWeight: 600,
-                    transition: "transform 150ms ease, box-shadow 150ms ease",
-                    "&:hover": {
-                      background: `linear-gradient(135deg, ${djangoGreen.accent} 0%, ${djangoGreen.dark} 100%)`,
-                      transform: "translateY(-1px)",
-                      boxShadow: `0 8px 24px ${djangoGreen.header}55`,
+              <Group grow>
+                <Button
+                  size="md"
+                  variant="light"
+                  color="teal"
+                  leftSection={<IconInfoCircle size={18} />}
+                  onClick={showWelcomeToast}
+                  styles={{
+                    root: {
+                      minHeight: rem(48),
+                      fontWeight: 600,
+                      color: djangoGreen.dark,
+                      backgroundColor: djangoGreen.light,
                     },
-                  },
-                }}
-              >
-                Test Loader — ignite engines
-              </Button>
+                  }}
+                >
+                  Test Toast
+                </Button>
+                <Button
+                  size="md"
+                  leftSection={<IconRocket size={18} />}
+                  onClick={load}
+                  styles={{
+                    root: {
+                      background: `linear-gradient(135deg, ${djangoGreen.accent} 0%, ${djangoGreen.header} 100%)`,
+                      border: "none",
+                      minHeight: rem(48),
+                      fontWeight: 600,
+                      transition: "transform 150ms ease, box-shadow 150ms ease",
+                      "&:hover": {
+                        background: `linear-gradient(135deg, ${djangoGreen.accent} 0%, ${djangoGreen.dark} 100%)`,
+                        transform: "translateY(-1px)",
+                        boxShadow: `0 8px 24px ${djangoGreen.header}55`,
+                      },
+                    },
+                  }}
+                >
+                  Test Loader
+                </Button>
+              </Group>
             </Stack>
           </Paper>
 
