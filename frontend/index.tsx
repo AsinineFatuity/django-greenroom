@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import App from "./App";
 import reduxStore from "./src/redux/store";
 import "@mantine/core/styles.css";
-import "mantine-datatable/styles.layer.css";
 import "@mantine/notifications/styles.css";
 
 

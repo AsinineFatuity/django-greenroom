@@ -3,7 +3,7 @@ import { defineConfig} from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import dotenv from "dotenv";
-dotenv.config({ path: "./frontend/environments/.env.development" });
+dotenv.config({ path: "./frontend/.env" });
 
 
 export default defineConfig({
