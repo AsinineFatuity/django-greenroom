@@ -27,7 +27,7 @@ Named after Django's green — this is the room where your app gets ready before
 ### 1. Clone and rename
 
 ```bash
-git clone <your-repo-url> my-project
+git clone https://github.com/AsinineFatuity/django-greenroom.git my-project
 cd my-project
 ```
 
