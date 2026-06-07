@@ -48,11 +48,11 @@ const stackBadges: {
 ];
 
 const toastMessages: FeedBackToast[] = [
-  { message: "Welcome to my hybrid Django-React project", type: "info" },
+  { message: "Welcome to Your Awesome Project", type: "info" },
   { message: "This is a resounding success!", type: "success" },
-  { message: "This is a warning message", type: "warning" },
-  { message: "This is an error message", type: "error" },
-  { message: "This is a default message", type: "default" },
+  { message: "This is how warnings look like", type: "warning" },
+  { message: "This is how errors look like", type: "error" },
+  { message: "This is how default messages look like", type: "default" },
 ];
 
 const getRandomToastMessage = (): FeedBackToast =>
@@ -70,10 +70,6 @@ const Home = () => {
       }),
     );
   };
-
-  React.useEffect(() => {
-    showWelcomeToast();
-  }, [dispatch]);
 
   const load = () => {
     dispatch(startLoading());
