@@ -1,9 +1,8 @@
-
-import { loadingIndicatorReducer } from "./loadingIndicator";
-import { feedbackToastReducer } from "./feedbackToast";
+import { loadingReducer } from "@/redux/reducer/slices/loading";
+import { feedbackToastReducer } from "@/redux/reducer/slices/feedbackToast";
 
 export const sliceReducers = {
-  isLoading: loadingIndicatorReducer,
+  loader: loadingReducer,
   feedbackToast: feedbackToastReducer,
 };
 

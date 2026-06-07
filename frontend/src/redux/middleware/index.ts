@@ -1,2 +1,3 @@
+import feedbackListener from "@/redux/middleware/listeners/feedbackToast";
 
-console.log("Import and export all middleware here");
+export const listenerMiddleware = [feedbackListener.middleware];

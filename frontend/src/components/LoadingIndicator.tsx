@@ -1,29 +1,27 @@
-
 import React from "react";
-import { HashLoader } from "react-spinners";
+import { LoadingOverlay, Box } from "@mantine/core";
+
 import { useAppSelector } from "../hooks";
 
 export const LoadingIndicator = () => {
-  const isLoading = useAppSelector((state) => state.isLoading);
+  const isLoading = useAppSelector((state) => state.loader.isLoading);
 
   if (!isLoading) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        zIndex: 9999,
-      }}
+    <Box
+      pos="fixed"
+      top={0}
+      left={0}
+      w="100vw"
+      h="100vh"
+      style={{ zIndex: 9999, pointerEvents: "none" }}
     >
-      <HashLoader color={"#013d55"} size={120} />
-    </div>
+      <LoadingOverlay
+        visible={Boolean(true)}
+        overlayProps={{ radius: "sm", blur: 2 }}
+        loaderProps={{ color: "#D4AF37", type: "bars" }}
+      />
+    </Box>
   );
 };
