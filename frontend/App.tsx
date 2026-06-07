@@ -1,17 +1,27 @@
 
 import React from "react";
-import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
-import { Home } from "./src/pages";
-import { APP_URLS } from "./src/helpers";
+import { MantineProvider } from "@mantine/core";
+import { MantineEmotionProvider } from "@mantine/emotion";
+import { Notifications } from "@mantine/notifications";
+import { RouterProvider } from "react-router-dom";
+import router from "./src/routes/Router";
+import {
+  FeedbackToast,
+  LoadingIndicator,
+  AppMantineTheme,
+} from "./src/components";
 
 function App() {
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path={APP_URLS.home} element={<Home />} />
-          <Route path="*" element={<Navigate to={APP_URLS.home} />} />
-        </Routes>
-      </BrowserRouter>
+    <MantineProvider theme={AppMantineTheme}>
+      <MantineEmotionProvider>
+        <Notifications position="bottom-right" zIndex={9999} />
+            <RouterProvider router={router} />
+      </MantineEmotionProvider>
+      <LoadingIndicator />
+      <FeedbackToast />
+    </MantineProvider>
   );
 }
 export default App;
+
