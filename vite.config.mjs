@@ -3,7 +3,8 @@ import { defineConfig} from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import dotenv from "dotenv";
-dotenv.config({ path: "./frontend/.env" });
+const env = loadEnv("build", path.resolve(__dirname, "./frontend.env"), "VITE_");
+
 
 
 export default defineConfig({
@@ -35,7 +36,10 @@ export default defineConfig({
     hmr: true
   },
   define: {
-    "process.env": JSON.stringify(process.env),
+    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV ?? "development"),
+    ...Object.fromEntries(
+      Object.entries(env).map(([k, v]) => [`process.env.${k}`, JSON.stringify(v)])
+    ),
   },
   envDir: "./frontend",
 });
